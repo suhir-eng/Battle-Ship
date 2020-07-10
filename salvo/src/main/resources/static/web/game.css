@@ -1,0 +1,431 @@
+body {
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#banner {
+
+    height: 380px;
+    background-image: url(Pirates/dangerousWater.png);
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: space;
+    background-size: contain;
+    opacity: 0.9;
+}
+
+.title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 6em;
+    text-align: center;
+    padding-top: 2.8em;
+    /*    color: white;*/
+    text-shadow: -0.5px -0.5px 0 #F8F8FF,
+    0.5px -0.5px 0 #F8F8FF,
+    -0.5px 1px 0 #F8F8FF,
+    0.4px 0.3px 0 #F8F8FF;
+
+}
+
+#app {
+    background-image: url(Pirates/Redemption_victory2.png);
+    background-repeat: repeat-y;
+
+}
+
+/*leaderboard table*/
+
+.leader {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    border-bottom: 1px solid white;
+
+}
+
+.user {
+    font-family: 'Wallpoet', cursive;
+}
+
+table.leader.table.table-hover {
+    width: 60%;
+    table-layout: auto;
+
+}
+
+table.leader.table.table-hover td th {
+    white-space: nowrap;
+    padding: 10px;
+}
+
+
+
+.index {
+    font-weight: 900;
+    color: #996515;
+}
+
+table th {
+    letter-spacing: 0.7px;
+    text-align:justify;
+}
+/*games table*/
+/*
+th.date, th.players, th.status{
+    text-align:left;
+}
+*/
+td {
+/*    */
+    position: relative;
+    display:table-cell;
+    width: 50px;
+    height: 50px;
+
+
+}
+
+.top {
+    background: url(Pirates/gold_meday_color_-_Google_Search.png);
+
+}
+
+/*login & logout button*/
+
+.btn-primary {
+    background: url(Pirates/gold_meday_color_-_Google_Search.png);
+    color: black;
+    font-family: 'Wallpoet', cursive;
+    font-size: 1.3em;
+    margin: 20px;
+}
+
+span.back-btn {
+    background: url(Pirates/gold_meday_color_-_Google_Search.png);
+    color: black;
+    text-decoration: none;
+    font-family: 'Wallpoet', cursive;
+    margin-right: 30px;
+    width: 20%;
+    height: 20%;
+    font-size: 1.3em;
+    padding: 7px;
+    margin: 20px;
+    margin-top: 10px;
+}
+
+input.createGame.btn {
+    background: url(Pirates/gold_meday_color_-_Google_Search.png);
+    font-family: 'Wallpoet', cursive;
+    margin: 20px;
+}
+input.createGame.btn:hover{
+    color: #fff;
+}
+
+/*sign up button*/
+
+.btn-secondary {
+    font-family: 'Wallpoet', cursive;
+    color: black;
+}
+
+.allGames.table.table-hover {
+    width: 70%;
+    margin: auto;
+
+}
+
+.allGames.table.table-hover th {
+    width: 60%;
+    table-layout: auto;
+
+}
+
+/*Login pop-up screen */
+
+.login-screen {
+    background-image: url(Pirates/login.png);
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 280px;
+    /*    position: relative;*/
+    position: fixed;
+    top: calc(50% - 25px);
+    left: calc(50% - 50px);
+}
+
+.fa-times-circle {
+    position: relative;
+    top: 30px;
+    left: 50px;
+    font-size: 1.7em;
+    color: black;
+    height: 200px;
+    width: 200px;
+}
+
+div.col-auto.form-inline {
+    padding-top: 70px;
+    padding-left: 90px;
+}
+
+#inputEmail,
+#inputPassword {
+    margin-bottom: 25px;
+}
+
+
+#inputEmail {
+    margin-left: 15px;
+}
+
+.logon {
+    margin-left: 30px;
+      cursor: pointer;
+
+}
+
+button.close-btn {
+    z-index: 5;
+    cursor: pointer;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 31px;
+    right: 40px;
+    transform: translate(0%, -50%);
+    font-size: 20px;
+    font-weight: 400;
+
+}
+
+.button.close-btn:hover {
+    background: #bbb;
+}
+
+.btn.btn-primary.logout {
+    position: absolute;
+    top: 105px;
+    left: 150px;
+}
+
+
+.leader .tr {
+    cursor: crosshair;
+    /*    table-layout: fixed;*/
+}
+
+.sTitle {
+    font-family: 'Black Ops One', cursive;
+    font-size: 3em;
+    letter-spacing: 4px;
+    text-shadow: -0.5px -0.5px 0 #F8F8FF,
+    0.5px -0.5px 0 #F8F8FF,
+    -0.5px 1px 0 #F8F8FF,
+    0.4px 0.3px 0 #F8F8FF;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+div.welcomemsg {
+    height: 20%;
+    font-size: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.leader {
+    width: 400px;
+    /*    table-layout: fixed;*/
+}
+/*button to join - makes entire area clickable*/
+th.loginToJoin{
+    display: block;
+    cursor: pointer;
+}
+.main-login{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+/*div*/
+.ship-info {
+    width: 100px;
+    height: 590px;
+/*    border: 1px solid gold;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: -20px;
+}
+
+table {
+/*    border-collapse: separate;*/
+    border-color: brown;
+}
+
+
+
+div.alltables {
+    margin-top: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /*    flex-wrap: nowrap;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /*    margin:-10px;*/
+}
+
+.ships,
+.salvoes {
+    width: 30%;
+}
+
+
+
+/*grids area END */
+
+.game-title {
+    font-family: 'Black Ops One', cursive;
+    font-size: 3em;
+    letter-spacing: 4px;
+    text-shadow: -0.5px -0.5px 0 #F8F8FF,
+    0.5px -0.5px 0 #F8F8FF,
+    -0.5px 1px 0 #F8F8FF,
+    0.4px 0.3px 0 #F8F8FF;
+}
+
+.signingUp {}
+
+/*GAME HTML START*/
+
+h2.player-playing{
+    font-family: 'Black Ops One', cursive;
+    font-size: 1.7em;
+    text-align: center;
+/*
+    letter-spacing: 4px;
+    text-shadow: -0.5px -0.5px 0 #F8F8FF,
+    0.5px -0.5px 0 #F8F8FF,
+    -0.5px 1px 0 #F8F8FF,
+    0.4px 0.3px 0 #F8F8FF;
+*/
+}
+
+.sailor{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50px;
+    top: -60px;
+}
+.sailor2{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 30px;
+    top:-30px;
+}
+.ship-location {
+    background-color: darkblue;
+}
+
+.salvo-location {
+    border: 1px green solid;
+    border-radius: 1px;
+
+}
+
+.hit {
+    background-color: red;
+
+}
+
+/*ships stylying*/
+
+div.the-ship.horizontal{
+/*     margin-top: -30px;*/
+    padding-bottom:50px;
+}
+
+div.the-ship.horizontal.battleship{
+    margin-top: -30px;
+}
+div.the-ship.horizontal.cruiser{
+    margin-top:-40px;
+}
+
+#carrier {
+    width: 250px;
+    height: 50px;
+
+/*    top:0;*/
+    left:0;
+    z-index: 9;
+}
+
+#battleship{
+    width: 200px;
+    height: 50px;
+
+/*    top:0;*/
+    left:0;
+    z-index: 9;
+}
+
+#cruiser{
+    width: 150px;
+    height: 50px;
+
+/*    top:0;*/
+    left:0;
+    z-index: 9;
+}
+
+#destroyer{
+    width: 100px;
+    height: 50px;
+
+/*    top:0;*/
+    left:0;
+    z-index: 9;
+}
+#submarine{
+    width: 150px;
+    height: 50px;
+
+/*    top:0;*/
+    left:0;
+    z-index: 9;
+}
+
+
+.hold {
+    border: solid #ccc 4px;
+}
+
+
+.vertical{
+    transform-origin: left;
+    transform: rotate(90deg);
+    transition: 0.9s transform;
+     top: -23px !important;
+     left : 30px !important;
+}
+
+.invisible{
+    display: none;
+}
+

@@ -1,0 +1,14 @@
+td,th{
+    width: 45px;
+    height: 45px;
+    text-align:center;
+    vertical-align:middle !important;
+}
+@media only screen and (max-width: 600px) {
+    h1{
+    font-size:30px;}
+    td,th{
+        width: 7%;
+        height:auto;
+    }
+}

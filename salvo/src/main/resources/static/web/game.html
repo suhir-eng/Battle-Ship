@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Wallpoet" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <title> Player view </title>
+</head>
+
+<body>
+<div id="app">
+    <header>
+        <div id="banner">
+            <h2 class="title"> BATTLESHIP </h2>
+        </div>
+    </header>
+    <!--
+    <div class="welcomemsg">
+        <h1> {{message}}</h1>
+    </div>
+--><span class="back-btn"> <a href="games.html" title="back to the main page">  Back to lobby </a></span>
+    <div id="content container">
+        <!--            <h1 class="game-title"> Game Information </h1>-->
+        <div class="alltables row justify-content-md-center">
+            <div class="ships col-sm-10 col-md-8 col-lg-5">
+                <div class="players">
+                    <img src="Pirates/sailor.png" class="sailor">
+                    <h2 class="player-playing"> {{players.player1}} </h2>
+                </div>
+                <table class="table table-bordered cell-hover">
+                    <tr>
+                        <th></th>
+                        <th class="table-dark" scope="col" v-for="key in cols"> {{key}}</th>
+                    </tr>
+                    <tr v-for="r in rows">
+                        <th class="table-dark" scope="row">{{r}}</th>
+                        <td v-for="c in cols" class="userCells" ondragover="dragoverHandler(event)" ondrop="drop(event)" :id="'U'+r+c"></td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="ship-info col-sm-2 col-md-3 col-lg-2">
+
+                <input class="btn btn-primary" type="submit" value="Submit"  onclick="saveships()" >
+
+              <p>To rotate a ship, click on it.</p>
+                <div class="the-ship carrier" ondragover="dragoverHandler(event)" ondrop="drop(event)" id="divcarrier"> Carrier
+                    <img src="AircraftCarrier1.Flippedpng.png" class="the-ship horizontal" id="carrier" draggable="true" ondragstart="startDrag(event)" onclick="turnTheShip('carrier')">
+
+                </div>
+
+                <!--                    ondragstart="startDrag(event)"-->
+
+                <div class="the-ship battleship" ondragover="dragoverHandler(event)" ondrop="drop(event)" id="divbattleship"> Battleship <img src="Pirates/battleship.png" class="the-ship horizontal" id="battleship" onclick="turnTheShip('battleship')"
+                                                                                                                     draggable="true" ondragstart="startDrag(event)" >
+                </div>
+
+                <div class="the-ship cruiser" ondragover="dragoverHandler(event)" ondrop="drop(event)" id="divcruiser"> Cruiser <img src="Pirates/cruiserFlipped.png" class="the-ship horizontal" id="cruiser" onclick="turnTheShip('cruiser')"
+                                                                                                               draggable="true" ondragstart="startDrag(event)"></div>
+
+
+                <div class="the-ship" ondragover="dragoverHandler(event)" ondrop="drop(event)" id="divsubmarine"> Submarine <img src="Pirates/submarine.png" class="the-ship horizontal" id="submarine" onclick="turnTheShip('submarine')"
+                                                                                                         draggable="true" ondragstart="startDrag(event)"></div>
+
+                <div class="the-ship" ondragover="dragoverHandler(event)" ondrop="drop(event)" id="divdestroyer"> Destroyer <img src="Pirates/destroyer.png" class="the-ship horizontal" id="destroyer" onclick="turnTheShip('destroyer')"
+                                                                                                         draggable="true" ondragstart="startDrag(event)"></div>
+            </div>
+            <div class="salvoes col-sm-10 col-md-8 col-lg-5" v-if="opponentTable">
+                <div class="subtitle">
+                    <img src="Pirates/sailor2.png" class="sailor2">
+                    <h2 class="player-playing"> {{players.player2}} </h2>
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th></th>
+                        <th class="table-light" v-for="key in cols"> {{key}}</th>
+                    </tr>
+                    <tr v-for="r in rows">
+                        <th class="table-light" scope="row">{{r}}</th>
+                        <td v-for="c in cols" class="enemyCells" :id="'E'+r+c"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-scrollto"></script>
+<script type="text/javascript" src="game.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Wallpoet" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <title> Games </title>
+</head>
+
+<body>
+<div id="app">
+    <header>
+        <div id="banner">
+            <h2 class="title"> BATTLESHIP </h2>
+        </div>
+    </header>
+    <div class="welcomemsg">
+        <h1> {{message}}</h1>
+    </div>
+    <div class="login-area">
+        <button type="submit" class="btn btn-primary" v-if="isLoggedIn"  @click="logout">Logout</button>
+        <div class="main-login form-inline" v-if="!isLoggedIn">
+            <!--            @submit.prevent="login" -->
+            <div class="form-group">
+                <label class="sr-only" for="inputEmail">Email</label>
+                <input type="email" class="form-control" placeholder="Email" v-model="userName" id="username">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="inputPassword">Password</label>
+                <input type="password" class="form-control" placeholder="Password" v-model="password" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary"  @click="login('normal')" @keyup.enter = "login('normal')" >Login</button>
+            <div class="signingUp">
+                <!--                    <label class="SignUp"> Not registered yet, no problem </label>-->
+                <button type="signup" class="btn btn-secondary"  @click="signUp"> Signup</button>
+            </div>
+        </div>
+    </div>
+    <div class="leaderboard">
+        <h1 class="sTitle"> Leaderboard </h1>
+
+        <table class="leader table table-hover">
+            <thead class="thead-dark">
+            <th class="name"> Name </th>
+            <th class="total"> Total </th>
+            <th class="won"> Won </th>
+            <th class="lost"> Lost </th>
+            <th class="tie"> Tie </th>
+            </thead>
+
+            <tr v-for="player,index in players" :class="{'top': index < 3}">
+                <!--                  if you want to add dinamically multiple classes-  <tr v-for="player,index in players" :class="{'top': index ===0,'silver': index ===1, 'bronze': index === 2}">-->
+                <th scope="row"> <span class="index">{{index+1}}.</span>
+                    <span class="user"> {{player.player}} </span></th>
+                <th> {{player.total}}</th>
+                <th> {{player.win}}</th>
+                <th> {{player.lose}}</th>
+                <th> {{player.tie}}</th>
+
+            </tr>
+        </table>
+
+    </div>
+    <input type="submit" class="createGame btn" v-if="isLoggedIn" @click="newGame" value="Create New Game">
+    <!--all games table-->
+    <div class="games-table">
+        <h1 class="sTitle"> Games </h1>
+        <table class="allGames table table-hover">
+            <thead class="thead-light">
+            <th class="date"> Date </th>
+            <th class="players"> Players </th>
+            <th class="status"> Status </th>
+            </thead>
+            <!--            <th v-for="game in createGame"></th>-->
+            <tr id="everyGame" v-for="game in games">
+                <th scope="row"> {{game.created}} </th>
+                <th>{{game.playerOne}} {{game.playerTwo}} </th>
+                <th>
+                <span v-if="game.status == 'Play' && isLoggedIn">
+                <a :href="'game.html?gp='+game.playerOneId">{{game.status}}</a>
+                </span>
+                    <span v-if="game.status == 'Join' && isLoggedIn">
+                <a @click="joinGame(game.gameId)"> {{game.status}}</a>
+                </span>
+                    <span class="loginToJoin" v-else-if="game.status == 'Join' && !isLoggedIn"><a @click="openPopUpLogIn(game.gameId)"> Login to join </a></span>
+                    <span v-if="game.status == 'IN GAME'">
+                    {{game.status}}
+                </span>
+                </th>
+            </tr>
+
+        </table>
+    </div>
+    <div class="login-screen"
+         v-if="islogin">
+        <button type="submit" class="btn btn-primary logout" v-if="isLoggedIn"  @click="logout">Logout</button>
+        <button type="reset" class="close-btn" @click="closePopUpLogIn"> X </button>
+        <div class="col-auto form-inline" v-if="!isLoggedIn"
+             @submit.prevent="login">
+            <div class="pop form-group">
+                <label class="sr-only" >Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" >
+            </div>
+            <div class="pop col-auto form-group">
+                <label class="sr-only" >Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" >
+            </div>
+            <button type="submit" class="btn btn-primary logon"  @click="loginFromPopUp"> Login </button>
+            <div class="col-auto signingUp">
+
+                <!--                    <label class="SignUp"> Not registered yet, no problem </label>-->
+                <button type="signup" class="btn btn-secondary pop"  @click="signUp"> Signup</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript" src="games.js">
+</script>
+</body>
+
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Games</title>
+</head>
+<body>
+<div id="app">
+    <form>
+    <div class="container">
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw"  id="paword" required>
+
+        <button type="submit" onclick="login()">Login</button>
+    </div>
+    </form>
+<h1> Games </h1>
+<ol id="allGames">
+</ol>
+<div class="leaderBoard">
+    <h1 class="sTitle"> LeaderBoard </h1>
+
+    <table class="leader table table-hover" border="1" style="margin-bottom:20px;">
+        <thead class="head-dark">
+        <th class="name"> Name </th>
+        <th class="total"> Total </th>
+        <th class="won"> Won </th>
+        <th class="lost"> Lost </th>
+        <th class="tie"> Tie </th>
+        </thead>
+        <tbody id="leaders"></tbody>
+    </table>
+</div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="games.js"></script>
+</body>
+</html>-->
